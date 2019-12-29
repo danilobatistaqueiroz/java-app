@@ -27,7 +27,7 @@ pipeline {
         }
         stage('---Slack Notification---'){
             steps {
-                slackSend channel: '#jenkins-school', color: 'good', message: 'Welcom to jenkins, Slack!', teamDomain: 'daniloshome', tokenCredentialId: 'slack-demo'
+                slackSend channel: '#jenkins-school', color: 'good', message: 'HelloSlack', teamDomain: 'daniloshome', tokenCredentialId: 'credenciais'
             }
         }
     }
