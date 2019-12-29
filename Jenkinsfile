@@ -3,20 +3,26 @@ pipeline {
     stages {
         stage('---clean---') {
             steps {
-                def mvnHome = tool name: 'maven-3', type: 'maven'
-                sh "${mvnHome}/bin/mvn clean"
+                script {
+                    def mvnHome = tool name: 'maven-3', type: 'maven'
+                    sh "${mvnHome}/bin/mvn clean"
+                }
             }
         }
         stage('--test--') {
             steps {
-                def mvnHome = tool name: 'maven-3', type: 'maven'
-                sh "${mvnHome}/bin/mvn test"
+                script {
+                    def mvnHome = tool name: 'maven-3', type: 'maven'
+                    sh "${mvnHome}/bin/mvn test"
+                }
             }
         }
         stage('--package--') {
             steps {
-                def mvnHome = tool name: 'maven-3', type: 'maven'
-                sh "${mvnHome}/bin/mvn package"
+                script {
+                    def mvnHome = tool name: 'maven-3', type: 'maven'
+                    sh "${mvnHome}/bin/mvn package"
+                }
             }
         }
         stage('---Slack Notification---'){
