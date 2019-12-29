@@ -1,19 +1,20 @@
 pipeline {
     agent any
     stages {
+        def mvnHome = tool name: 'maven-3', type: 'maven'
         stage('---clean---') {
             steps {
-                sh "mvn clean"
+                sh "${mvnHome}/bin/mvn clean"
             }
         }
         stage('--test--') {
             steps {
-                sh "mvn test"
+                sh "${mvnHome}/bin/mvn test"
             }
         }
         stage('--package--') {
             steps {
-                sh "mvn package"
+                sh "${mvnHome}/bin/mvn package"
             }
         }
         stage('---Slack Notification---'){
