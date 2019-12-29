@@ -1,6 +1,9 @@
 pipeline {
     agent any
     stages {
+        stage('---git checkout---'){
+            git 'https://github.com/javahometech/java-app'
+        }
         stage('---clean---') {
             steps {
                 sh "mvn clean"
@@ -16,7 +19,7 @@ pipeline {
                 sh "mvn package"
             }
         }
-        stage('Slack Notification'){
+        stage('---Slack Notification---'){
             slackSend channel: '#jenkins-school', color: 'good', message: 'Welcom to jenkins, Slack!', teamDomain: 'daniloshome', tokenCredentialId: 'slack-demo'
         }
     }
